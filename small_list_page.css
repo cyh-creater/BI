@@ -1,0 +1,129 @@
+@media screen and (max-width: 750px) {
+	#box div.con{
+		width: 100%;
+	}
+	.con .con_wrap_right{
+		display: none;
+	}
+	html,body{
+		width:100%;
+	}
+	#box{
+		width:100%;
+	}
+	/*#search_box{
+		width:750px;
+	}*/
+	#search_box .clear {
+	    margin: 0; 
+	    text-align: left;
+	}
+	#search_box input {
+		outline: none;
+		width: 80%;
+		line-height: 5px;
+		font-size: 14px;
+		padding: 10px 10px;
+		box-sizing: border-box;
+		background: #F6F6F6;
+		border: none;
+		margin-left: 20px;
+	}
+	#search_box button{
+		display: inline-block;
+		width:55px;
+		height:50px;
+	}
+	#search_box div.hot_words {
+		width:100%;
+	    color: #fff;
+	    line-height: 40px;
+	    overflow: hidden;
+	    margin-left: 0;
+	    padding: 0 15px;
+	    text-align: center;
+	}
+	#search_box div.hot_words .hot_search {
+	    float: left;
+	    margin-right: 0;
+	    color: #191919;
+	    /*width: 65px;*/
+	    text-align: left;
+	}
+	#key_list {
+	    width: 250px;
+	    text-align: left;
+	    overflow: hidden;
+	    white-space: nowrap;
+	}
+	.con .con_wrap_left {
+	    width: 100%;
+	}
+	.con .con_ul {
+		/*width:375px;*/
+	}
+	.con .con_ul .con_li {
+	    overflow: hidden;
+	    margin: 15px;
+	    border-bottom: 1px solid #D3D3D3;
+	    background: #FFFFFF;
+	    padding:0;
+	}
+	.con .con_ul .con_li .hd_con{
+		width:100%;
+	}
+	.hd_con ul li>span {
+	    width: 25%;
+	    float: left;
+	}
+	.hd_con ul li p {
+	    width: 75%;
+	    float: left;
+	    margin-bottom: 0;
+	}
+	.fy{
+		width:375px;
+		margin:0;
+	}
+	.page_div{
+		width:375px;
+		margin-top:20px;
+		padding:0 20px;
+		line-height: 38px;
+	}
+	#search_box div.hot_words a{
+		color: #008DF3;
+	}
+	.con .con_ul .con_li .hd_right{
+		width: 100%;
+		text-align: left;
+		margin-top: 0;
+	}
+	.con .con_ul .con_li .hd_right span{
+		width: 25%;
+    	float: left;
+    	line-height: 40px;
+	}
+	.con .con_ul .con_li .hd_right span:last-child{
+		width: 75%;
+		    color: #222222;
+    		font-size:14px;
+    		font-weight: 500;
+	}
+	#firstPage, #lastPage, #nextPage, #prePage {
+	    width: 25px;
+	    padding-left: 0;
+	    display: none;
+	}
+	#page .totalPages, #page .totalSize {
+	    width: 49%;
+	    font-size: 12px;
+	    display: block;
+	    float: left;
+	    margin: 10px 0;
+	    text-align: right;
+	}
+	#page .totalSize {
+	    text-align: left;
+	}
+}

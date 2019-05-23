@@ -1,16 +1,16 @@
-/*椤甸潰搴曢儴*/
+/*页面底部*/
 *{
 	padding: 0px;
 	margin: 0px;
 	font-size: 14px;
 	list-style: none;
 	text-decoration: none;
-	font-family: "寰蒋闆呴粦";
+	font-family: "微软雅黑";
 }
 #content .content_wrap a{
 	text-decoration: none;
 }
-/*澶撮儴*/
+/*头部*/
 .top{
 	width: 100%;
 }
@@ -146,7 +146,7 @@
 }
 
 
-/*鍒嗛〉*/
+/*分页*/
 .fy {
 	/*width: 1200px;*/
 	margin: 0 auto;
@@ -293,4 +293,5 @@
 		font-size: 14px;
 	}
 }
+
 
