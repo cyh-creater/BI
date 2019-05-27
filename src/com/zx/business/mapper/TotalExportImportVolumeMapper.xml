@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zx.business.mapper.TotalExportImportVolumeMapper">
+  <resultMap id="BaseResultMap" type="com.zx.business.pojo.TotalExportImportVolume">
+    <id column="month" jdbcType="INTEGER" property="month" />
+    <result column="total_export_import_volume" jdbcType="REAL" property="totalExportImportVolume" />
+    <result column="total_export_volume" jdbcType="REAL" property="totalExportVolume" />
+    <result column="total_import_volume" jdbcType="REAL" property="totalImportVolume" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    month, total_export_import_volume, total_export_volume, total_import_volume
+  </sql>
+  <select id="selectByExample" parameterType="com.zx.business.pojo.TotalExportImportVolumeExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from total_export_import_volume
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from total_export_import_volume
+    where month = #{month,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from total_export_import_volume
+    where month = #{month,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.zx.business.pojo.TotalExportImportVolumeExample">
+    delete from total_export_import_volume
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.zx.business.pojo.TotalExportImportVolume">
+    insert into total_export_import_volume (month, total_export_import_volume, total_export_volume, 
+      total_import_volume)
+    values (#{month,jdbcType=INTEGER}, #{totalExportImportVolume,jdbcType=REAL}, #{totalExportVolume,jdbcType=REAL}, 
+      #{totalImportVolume,jdbcType=REAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zx.business.pojo.TotalExportImportVolume">
+    insert into total_export_import_volume
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="month != null">
+        month,
+      </if>
+      <if test="totalExportImportVolume != null">
+        total_export_import_volume,
+      </if>
+      <if test="totalExportVolume != null">
+        total_export_volume,
+      </if>
+      <if test="totalImportVolume != null">
+        total_import_volume,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="month != null">
+        #{month,jdbcType=INTEGER},
+      </if>
+      <if test="totalExportImportVolume != null">
+        #{totalExportImportVolume,jdbcType=REAL},
+      </if>
+      <if test="totalExportVolume != null">
+        #{totalExportVolume,jdbcType=REAL},
+      </if>
+      <if test="totalImportVolume != null">
+        #{totalImportVolume,jdbcType=REAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.zx.business.pojo.TotalExportImportVolumeExample" resultType="java.lang.Long">
+    select count(*) from total_export_import_volume
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update total_export_import_volume
+    <set>
+      <if test="record.month != null">
+        month = #{record.month,jdbcType=INTEGER},
+      </if>
+      <if test="record.totalExportImportVolume != null">
+        total_export_import_volume = #{record.totalExportImportVolume,jdbcType=REAL},
+      </if>
+      <if test="record.totalExportVolume != null">
+        total_export_volume = #{record.totalExportVolume,jdbcType=REAL},
+      </if>
+      <if test="record.totalImportVolume != null">
+        total_import_volume = #{record.totalImportVolume,jdbcType=REAL},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update total_export_import_volume
+    set month = #{record.month,jdbcType=INTEGER},
+      total_export_import_volume = #{record.totalExportImportVolume,jdbcType=REAL},
+      total_export_volume = #{record.totalExportVolume,jdbcType=REAL},
+      total_import_volume = #{record.totalImportVolume,jdbcType=REAL}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zx.business.pojo.TotalExportImportVolume">
+    update total_export_import_volume
+    <set>
+      <if test="totalExportImportVolume != null">
+        total_export_import_volume = #{totalExportImportVolume,jdbcType=REAL},
+      </if>
+      <if test="totalExportVolume != null">
+        total_export_volume = #{totalExportVolume,jdbcType=REAL},
+      </if>
+      <if test="totalImportVolume != null">
+        total_import_volume = #{totalImportVolume,jdbcType=REAL},
+      </if>
+    </set>
+    where month = #{month,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zx.business.pojo.TotalExportImportVolume">
+    update total_export_import_volume
+    set total_export_import_volume = #{totalExportImportVolume,jdbcType=REAL},
+      total_export_volume = #{totalExportVolume,jdbcType=REAL},
+      total_import_volume = #{totalImportVolume,jdbcType=REAL}
+    where month = #{month,jdbcType=INTEGER}
+  </update>
+</mapper>

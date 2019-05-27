@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+        
+    <!-- 组件扫描 -->
+	<context:component-scan base-package="com.zx.*"></context:component-scan>
+        
+   	<!-- 引入外部jdbc链接池 -->
+   	<context:property-placeholder location="classpath:jdbc.properties"/>
+   	
+   	<!-- druid链接池 -->
+   	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+   		<property name="driverClassName" value="${jdbc.driver}"></property>
+   		<property name="url" value="${jdbc.url}"></property>
+   		<property name="username" value="${jdbc.username}"></property>
+   		<property name="password" value="${jdbc.password}"></property>
+   	</bean>
+   	
+   	<!-- 管理mybatis    SqlSessionFactoryBean-->
+   	<bean class="org.mybatis.spring.SqlSessionFactoryBean">
+   		<property name="dataSource" ref="dataSource"></property>
+   		<property name="configLocation" value="classpath:SqlMapperConfig.xml"></property>
+   		<property name="typeAliasesPackage" value="com.zx.system.pojo;com.zx.business.pojo"></property>
+   		<property name="plugins">
+   		  <array>
+   		    <bean  class="com.github.pagehelper.PageInterceptor">
+   		      <property name="properties">
+   		        <value>
+   		           helperDialect=mysql
+   		        </value>
+   		      </property>
+   		    </bean>
+   		  </array>
+   		</property>
+   		
+   	</bean>
+   	
+   	<!-- 加载mybatis映射文件 -->
+   	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+   		<property name="basePackage" value="com.zx.system.mapper;com.zx.business.mapper"></property>
+   	</bean>
+   	
+   	<!-- 平台事务管理器 -->
+   	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+   		<property name="dataSource" ref="dataSource"></property>
+   	</bean>
+   	
+   	<!-- 事务增强 -->
+   	<tx:advice id="tx" transaction-manager="transactionManager">
+   		<tx:attributes>
+   			<tx:method name="save*" propagation="REQUIRED"/>
+   			<tx:method name="dele*" propagation="REQUIRED"/>
+   			<tx:method name="update*" propagation="REQUIRED"/>
+   			<tx:method name="select*" read-only="true"/>
+   		</tx:attributes>
+   	</tx:advice>
+   	<aop:config>
+   		<aop:pointcut expression="execution(* com.zx.service.imp.*.*(..))" id="service"/>
+   		<aop:advisor advice-ref="tx" pointcut-ref="service"/>
+   	</aop:config>
+   	
+   	<!-- 处理器映射器和处理器适配器 -->
+   	<mvc:annotation-driven></mvc:annotation-driven>
+   	
+   	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+   		<property name="prefix" value="/WEB-INF/"></property>
+   		<property name="suffix" value=".jsp"></property>
+   	</bean>
+     
+   	
+</beans>

@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zx.business.mapper.GudingzichanTzMapper">
+  <resultMap id="BaseResultMap" type="com.zx.business.pojo.GudingzichanTz">
+    <id column="month" jdbcType="INTEGER" property="month" />
+    <result column="guding_zctz" jdbcType="REAL" property="gudingZctz" />
+    <result column="first_industry" jdbcType="REAL" property="firstIndustry" />
+    <result column="second_industry" jdbcType="REAL" property="secondIndustry" />
+    <result column="third_industry" jdbcType="REAL" property="thirdIndustry" />
+    <result column="fangdichan" jdbcType="REAL" property="fangdichan" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    month, guding_zctz, first_industry, second_industry, third_industry, fangdichan
+  </sql>
+  <select id="selectByExample" parameterType="com.zx.business.pojo.GudingzichanTzExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from gudingzichan_tz
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from gudingzichan_tz
+    where month = #{month,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from gudingzichan_tz
+    where month = #{month,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.zx.business.pojo.GudingzichanTzExample">
+    delete from gudingzichan_tz
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.zx.business.pojo.GudingzichanTz">
+    insert into gudingzichan_tz (month, guding_zctz, first_industry, 
+      second_industry, third_industry, fangdichan
+      )
+    values (#{month,jdbcType=INTEGER}, #{gudingZctz,jdbcType=REAL}, #{firstIndustry,jdbcType=REAL}, 
+      #{secondIndustry,jdbcType=REAL}, #{thirdIndustry,jdbcType=REAL}, #{fangdichan,jdbcType=REAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zx.business.pojo.GudingzichanTz">
+    insert into gudingzichan_tz
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="month != null">
+        month,
+      </if>
+      <if test="gudingZctz != null">
+        guding_zctz,
+      </if>
+      <if test="firstIndustry != null">
+        first_industry,
+      </if>
+      <if test="secondIndustry != null">
+        second_industry,
+      </if>
+      <if test="thirdIndustry != null">
+        third_industry,
+      </if>
+      <if test="fangdichan != null">
+        fangdichan,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="month != null">
+        #{month,jdbcType=INTEGER},
+      </if>
+      <if test="gudingZctz != null">
+        #{gudingZctz,jdbcType=REAL},
+      </if>
+      <if test="firstIndustry != null">
+        #{firstIndustry,jdbcType=REAL},
+      </if>
+      <if test="secondIndustry != null">
+        #{secondIndustry,jdbcType=REAL},
+      </if>
+      <if test="thirdIndustry != null">
+        #{thirdIndustry,jdbcType=REAL},
+      </if>
+      <if test="fangdichan != null">
+        #{fangdichan,jdbcType=REAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.zx.business.pojo.GudingzichanTzExample" resultType="java.lang.Long">
+    select count(*) from gudingzichan_tz
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update gudingzichan_tz
+    <set>
+      <if test="record.month != null">
+        month = #{record.month,jdbcType=INTEGER},
+      </if>
+      <if test="record.gudingZctz != null">
+        guding_zctz = #{record.gudingZctz,jdbcType=REAL},
+      </if>
+      <if test="record.firstIndustry != null">
+        first_industry = #{record.firstIndustry,jdbcType=REAL},
+      </if>
+      <if test="record.secondIndustry != null">
+        second_industry = #{record.secondIndustry,jdbcType=REAL},
+      </if>
+      <if test="record.thirdIndustry != null">
+        third_industry = #{record.thirdIndustry,jdbcType=REAL},
+      </if>
+      <if test="record.fangdichan != null">
+        fangdichan = #{record.fangdichan,jdbcType=REAL},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update gudingzichan_tz
+    set month = #{record.month,jdbcType=INTEGER},
+      guding_zctz = #{record.gudingZctz,jdbcType=REAL},
+      first_industry = #{record.firstIndustry,jdbcType=REAL},
+      second_industry = #{record.secondIndustry,jdbcType=REAL},
+      third_industry = #{record.thirdIndustry,jdbcType=REAL},
+      fangdichan = #{record.fangdichan,jdbcType=REAL}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zx.business.pojo.GudingzichanTz">
+    update gudingzichan_tz
+    <set>
+      <if test="gudingZctz != null">
+        guding_zctz = #{gudingZctz,jdbcType=REAL},
+      </if>
+      <if test="firstIndustry != null">
+        first_industry = #{firstIndustry,jdbcType=REAL},
+      </if>
+      <if test="secondIndustry != null">
+        second_industry = #{secondIndustry,jdbcType=REAL},
+      </if>
+      <if test="thirdIndustry != null">
+        third_industry = #{thirdIndustry,jdbcType=REAL},
+      </if>
+      <if test="fangdichan != null">
+        fangdichan = #{fangdichan,jdbcType=REAL},
+      </if>
+    </set>
+    where month = #{month,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zx.business.pojo.GudingzichanTz">
+    update gudingzichan_tz
+    set guding_zctz = #{gudingZctz,jdbcType=REAL},
+      first_industry = #{firstIndustry,jdbcType=REAL},
+      second_industry = #{secondIndustry,jdbcType=REAL},
+      third_industry = #{thirdIndustry,jdbcType=REAL},
+      fangdichan = #{fangdichan,jdbcType=REAL}
+    where month = #{month,jdbcType=INTEGER}
+  </update>
+</mapper>

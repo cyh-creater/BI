@@ -1,0 +1,90 @@
+@media screen and (max-width: 768px) {
+	.xmtitle .title_wi{
+		width: 100%;
+		height: auto;
+	}
+	.xmtitle .title_wi img{
+		display: none;
+	}
+	.xmtitle .title_wi p{
+		display: none;
+	}
+	.xmtitle{
+		background: transparent !important;
+		margin-top: 0;
+	}
+	.xmtitle .title_wi .title_name{
+		width: 100%;
+		color: #222222;
+		font-weight: bold;
+		margin-left: 15px;
+	}
+	.xmtitle .title_wi .title_sx{
+		margin-left: 15px;
+	}
+	
+	/*閫夐」鍗″垏鎹�*/
+	.alltab{
+		width: 100%;
+		overflow: hidden;
+		padding: 0 15px;
+	}
+	.news_detail{
+		display: none;
+	}
+	.house_tabs{
+		width: 100%;
+		margin-top: 0;
+	}
+	.nav-tabs>li{
+		width: 20%;
+		
+	}
+	.nav.nav-tabs{
+		display: none;
+	}
+	.alltab .nav-tabs>li>a{
+		padding: 0;
+		margin: 0;
+		line-height: 50px;
+		text-align: center;	
+	}
+	.baseinfo a{
+		width: 100%;
+	}
+	.con .con_left{
+		width: 100%;
+	}
+	.con{
+		width: 100%;
+		padding: 0;
+		margin-top: 25px;
+	}
+	.con .con_right{
+		display: none;
+	}
+	.pogoSlider .pogoSlider-slide ul li{
+		width: 375px;
+	}
+	#msg{
+        width:300px;
+        height:400px;
+        position: fixed;
+       	top:0;
+       	bottom:0;
+       	left:0;
+       	right:0;
+       	margin:auto;
+        z-index:999;
+        background:#fff;
+        box-shadow:5px 5px 8px #999;
+        font-size:17px;
+        color:#666;
+        border:1px solid #f8f8f8;
+        text-align: center;
+        line-height: 2rem;
+        display:inline-block;
+        padding-bottom:20px;
+        border-radius:2px;
+    }
+}

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="smeq"
+  id="myeclipse.1554779869302"
+  context-root="/smeq"
+  j2ee-spec="5.0"
+  archive="smeq.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+
